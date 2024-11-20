@@ -1,0 +1,28 @@
+#basic Deployment file
+#imperative way =: kubectl create deployment test-app --image kiran2361993/kubegame:v1 --replicas 3 --dry-run -o yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: simple-app
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: simple-app
+  template:
+    metadata:
+      labels:
+        app: simple-app
+    spec:
+      containers:
+        - name: simple-app
+          image: kiran2361993/kubegame:v1
+          ports:
+            - containerPort: 80
+
+#kubectl get deploy -o wide
+#kubectl describe deploy name
+#kubectl scale deployment my-deployment --replicas=5
+#kubectl logs simple-app-87f974764-xf62q -c simple-app
+#kubectl set image deployment/nginx-deployment nginx=nginx:latest
+#kubectl create deployment test-app --image kiran2361993/kubegame:v1 --replicas 3 --dry-run -o yaml

@@ -1,0 +1,14 @@
+#there are two ways to create pod
+#1. imperative way means commands form => kubectl run nginx --image nginx:latest --dry-run -o yaml
+#2. declarative way means file format
+apiVersion: v1
+kind: Pod
+metadata:
+  labels:
+    run: app
+  name: app
+spec:
+  containers:
+  - image: kiran2361993/kubegame:v1
+    name: app
+
